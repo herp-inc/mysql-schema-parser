@@ -1,0 +1,67 @@
+name: mysql-schema-parser
+version: 0.1.0.0
+github: "herp-inc/mysql-schema-parser"
+license: BSD3
+author: "HERP dev team"
+maintainer: "dev@herp.co.jp"
+copyright: "2019 HERP, Inc."
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description: Please see the README on GitHub at <https://github.com/herp-inc/mysql-schema-parser#readme>
+
+dependencies:
+- attoparsec
+- base
+- HDBC
+- text
+- unordered-containers
+- safe
+
+default-extensions:
+- NamedFieldPuns
+- RecordWildCards
+- OverloadedStrings
+- TypeApplications
+- LambdaCase
+library:
+  source-dirs: src
+
+ghc-options:
+- -Wall
+- -Werror
+
+tests:
+  doctests:
+    main: Main.hs
+    source-dirs: doctests
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - base
+    - doctest
+    - doctest-discover
+  spec:
+    main: Main.hs
+    source-dirs: spec
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - mysql-schema-parser
+    - hspec
+    - hspec-discover
+    - text
+    - transformers

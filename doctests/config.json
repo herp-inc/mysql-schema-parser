@@ -1,0 +1,9 @@
+{
+    "doctestOptions": [
+        "-XLambdaCase",
+        "-XNamedFieldPuns",
+        "-XOverloadedStrings",
+        "-XRecordWildCards",
+        "-XTypeApplications"
+    ]
+}
