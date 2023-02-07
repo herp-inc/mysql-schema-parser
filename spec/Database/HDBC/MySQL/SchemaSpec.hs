@@ -11,7 +11,6 @@ import           Test.Hspec                     ( describe
 import           Database.HDBC.MySQL.Schema
 import           Database.HDBC.ColTypes         ( SqlTypeId(..) )
 import           Database.HDBC.MySQL.Parser     ( makeSqlColDesc )
-import           System.IO                      ( readFile )
 import           Data.Text                      ( pack )
 spec :: Spec
 spec = describe "Database.HDBC.MySQL.Schema" $ do
