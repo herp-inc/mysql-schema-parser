@@ -45,26 +45,6 @@ library
     , unordered-containers
   default-language: Haskell2010
 
-test-suite doctests
-  type: exitcode-stdio-1.0
-  main-is: Main.hs
-  other-modules:
-      Paths_mysql_schema_parser
-  hs-source-dirs:
-      doctests
-  default-extensions: NamedFieldPuns RecordWildCards OverloadedStrings TypeApplications LambdaCase
-  ghc-options: -Wall -Werror -threaded -rtsopts -with-rtsopts=-N
-  build-depends:
-      HDBC
-    , attoparsec
-    , base
-    , doctest
-    , doctest-discover
-    , safe
-    , text
-    , unordered-containers
-  default-language: Haskell2010
-
 test-suite spec
   type: exitcode-stdio-1.0
   main-is: Main.hs
@@ -82,10 +62,11 @@ test-suite spec
     , attoparsec
     , base
     , hspec
-    , hspec-discover
     , mysql-schema-parser
     , safe
     , text
     , transformers
     , unordered-containers
+  build-tool-depends:
+    hspec-discover:hspec-discover
   default-language: Haskell2010

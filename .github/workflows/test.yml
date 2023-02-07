@@ -1,0 +1,31 @@
+name: Test
+
+on: push
+
+env:
+  cache-version: "20230207-1"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ghc: ["8.10.7", "9.0.2", "9.2.5", "9.4.4"]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: haskell/actions/setup@v2
+        with:
+          ghc-version: ${{ matrix.ghc }}
+          cabal-version: "3.6"
+      - name: cabal Cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.cabal
+          key: test-${{ env.cache-version }}-${{ runner.os }}-${{ matrix.ghc }}-${{ hashFiles('**/*.cabal') }}
+          restore-keys: |
+            test-${{ env.cache-version }}-${{ runner.os }}-${{ matrix.ghc }}-
+      - run: cabal update
+      - name: Build
+        run: cabal build
+      - name: Run tests
+        run: cabal test
